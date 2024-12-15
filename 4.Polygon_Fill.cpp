@@ -59,3 +59,11 @@ int main()
 	return 0;
 }
 
+
+/*
+COMMANDS:
+
+gcc test.cpp -o test -lgraph
+./test
+
+*/
