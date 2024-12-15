@@ -53,3 +53,13 @@ int main()
 	delay(50000);
 	return 0;
 }
+
+
+/*
+COMMANDS:
+
+gcc test.cpp -o test -lgraph
+./test
+
+*/
+
