@@ -37,5 +37,11 @@
 	}
 
 
+/*
+COMMANDS:
 
+gcc test.cpp -o test -lgraph
+
+./test
+*/
 
