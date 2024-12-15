@@ -91,3 +91,12 @@ int main()
 }
 
 
+/*
+COMMANDS:
+
+g++ test.cpp -o test -lgraph
+./test
+
+*/
+
+
