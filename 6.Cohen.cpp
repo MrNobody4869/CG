@@ -125,3 +125,12 @@ Coordinate Lineclip::clipEndpoint(Coordinate p1, Coordinate p2)
         	}
         	return p1;
 } 
+
+
+/*
+COMMANDS:
+
+g++ test.cpp -o test -lgraph
+./test
+
+*/
