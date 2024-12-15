@@ -66,4 +66,12 @@ int main(int argc, char **argv)
 }
 
 
+/*
+COMMANDS:
+
+g++ -o test test.cpp -lGL -lGLU -lglut
+./test
+
+*/
+
 
