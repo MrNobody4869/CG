@@ -49,3 +49,11 @@ int main()
 	return 0;
 }
 
+
+/*
+COMMANDS:
+
+g++ test.cpp -o test -lgraph
+./test
+
+*/
