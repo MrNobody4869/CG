@@ -1,4 +1,3 @@
-//Tic Tac Toe Game
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,15 +7,15 @@ using namespace std;
 // Set up the game board as an array
 vector<string> board = {"-", "-", "-", "-", "-", "-", "-", "-", "-"};
 
-// Define a function to print the game board
+// Function to print the game board
 void printBoard() 
 {
-   	cout << board[0] << " | " << board[1] << " | " << board[2] << endl;
-    	cout << board[3] << " | " << board[4] << " | " << board[5] << endl;
-    	cout << board[6] << " | " << board[7] << " | " << board[8] << endl;
+    cout << board[0] << " | " << board[1] << " | " << board[2] << endl;
+    cout << board[3] << " | " << board[4] << " | " << board[5] << endl;
+    cout << board[6] << " | " << board[7] << " | " << board[8] << endl;
 }
 
-// Define a function to handle a player's turn
+// Function to handle a player's turn
 void takeTurn(string player) 
 {
     cout << player << "'s turn." << endl;
@@ -24,20 +23,22 @@ void takeTurn(string player)
     int position;
     cin >> position;
     position -= 1;
+    
+    // Check for valid input or if position is already taken
     while (position < 0 || position > 8 || board[position] != "-") 
     {
-        	cout << "Invalid input or position already taken. Choose a different position: ";
-        	cin >> position;
-        	position -= 1;
+        cout << "Invalid input or position already taken. Choose a different position: ";
+        cin >> position;
+        position -= 1;
     }
-    board[position] = player;
-    printBoard();
+    board[position] = player;  // Update the board
+    printBoard();  // Display updated board
 }
 
-// Define a function to check if the game is over
+// Function to check if the game is over (win, tie, or continue playing)
 string checkGameOver() 
 {
-    // Check for a win
+    // Check for a win (rows, columns, or diagonals)
     if ((board[0] == board[1] && board[1] == board[2] && board[0] != "-") ||
         (board[3] == board[4] && board[4] == board[5] && board[3] != "-") ||
         (board[6] == board[7] && board[7] == board[8] && board[6] != "-") ||
@@ -46,57 +47,58 @@ string checkGameOver()
         (board[2] == board[5] && board[5] == board[8] && board[2] != "-") ||
         (board[0] == board[4] && board[4] == board[8] && board[0] != "-") ||
         (board[2] == board[4] && board[4] == board[6] && board[2] != "-")) 
-        {
-        		return "win";
-        }
+    {
+        return "win";  // A player has won
+    }
+    
     // Check for a tie
     else if (count(board.begin(), board.end(), "-") == 0) 
     {
-        		return "tie";
+        return "tie";  // No empty spaces left, it's a tie
     }
-    // Game is not over
+    
+    // If no win or tie, the game is still going
     else 
     {
-        		return "play";
+        return "play";  // Game is ongoing
     }
 }
 
-// Define the main game loop
+// Main game loop
 int main() 
 {
-    	printBoard();
-    	string currentPlayer = "X";
-    	bool gameOver = false;
-    	while (!gameOver) 
-    	{
-        		takeTurn(currentPlayer);
-        		string gameResult = checkGameOver();
-        		if (gameResult == "win") 
-        		{
-            		cout << currentPlayer << " wins!" << endl;
-            		gameOver = true;
-        		} 
-        		else if (gameResult == "tie") 
-        		{
-            		cout << "It's a tie!" << endl;
-            		gameOver = true;
-        		} 
-        		else 
-        		{
-            		// Switch to the other player
-            		currentPlayer = currentPlayer == "X" ? "O" : "X";
-        		}
-    	}
-    	return 0;
+    printBoard();  // Display the initial empty board
+    string currentPlayer = "X";  // X starts the game
+    bool gameOver = false;  // Game is not over initially
+    
+    while (!gameOver) 
+    {
+        takeTurn(currentPlayer);  // Handle current player's turn
+        string gameResult = checkGameOver();  // Check if the game is over
+        
+        if (gameResult == "win") 
+        {
+            cout << currentPlayer << " wins!" << endl;  // Print winning message
+            gameOver = true;  // End the game
+        } 
+        else if (gameResult == "tie") 
+        {
+            cout << "It's a tie!" << endl;  // Print tie message
+            gameOver = true;  // End the game
+        } 
+        else 
+        {
+            // Switch players if the game is not over
+            currentPlayer = currentPlayer == "X" ? "O" : "X";
+        }
+    }
+    
+    return 0;  // End the program
 }
-
 
 /*
 COMMANDS:
 
-g++ test.cpp -o test -lgraph
+g++ test.cpp -o test
 ./test
-
 */
-
-
